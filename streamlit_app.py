@@ -94,4 +94,4 @@ try:
 
     st.text("Die Miete für die Wohnung sollte "+mietpreis_gesamt+"€ betragen.")
 except:
-  print("Für den ausgewählen Ort gibt es leider keinen Mietspiegel")
+  st.text("Für den ausgewählen Ort gibt es leider keinen Mietspiegel")
