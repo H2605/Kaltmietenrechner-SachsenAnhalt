@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 import streamlit as st
 from datetime import datetime
+import numpy as np
 # URL der Webseite
 st.title("Kaltmieten Rechner Sachsen Anhalt(Wohnungen)")
 
@@ -71,20 +72,26 @@ try:
     yearbuild=st.number_input(label="Jahr der Errichtung", min_value=1800, max_value= datetime.now().year, value=1950)
     yearres=st.number_input(label="Jahr der letzten Sanierung", min_value=yearbuild, max_value= datetime.now().year,value=yearbuild)
 
-    st.text("Der Preis pro Quadratmeter in "+place+" beträgt "+preis+"€ .")
+    st.text("Der durchschnittliche Mietspiegel in "+place+" beträgt "+preis+"€ pro Quadratmeter.")
     preis=preis.replace(",",".")
     #st.text(type(preis))
     preis=float(preis)
+    def abklingfunktion(t, k):
+        return np.exp(-k * t)
+
 
     gewichtung_baujahr = 0.01  # 2% Veränderung pro Dekade
     gewichtung_sanierung = 0.045  # 3% pro Dekade seit der letzten Sanierung
     gewichtung_zustand = 0.045  # 5% je nach Zustand der Wohnung
 
-    baujahr_abweichung = (datetime.now().year - yearbuild) / 10 * -gewichtung_baujahr
-    sanierung_abweichung = (datetime.now().year - yearres) / 10 * -gewichtung_sanierung
+    baujahr_abweichung = (datetime.now().year - yearbuild) #/ 10 * -gewichtung_baujahr
+    sanierung_abweichung = (datetime.now().year - yearres) #/ 10 * -gewichtung_sanierung
+    
+    sanierung_faktor=abklingfunktion(sanierung_abweichung,gewichtung_sanierung )
+    baujahr_faktor= abklingfunktion(baujahr_abweichung, gewichtung_baujahr)
+    zustand_faktor = 1 + (zustand - 3) * gewichtung_zustand  # 5 ist der Durchschnittszustand
+    gesamt_abweichung = baujahr_faktor * sanierung_faktor * zustand_faktor
 
-    zustand_abweichung = (zustand - 5) * gewichtung_zustand  # 5 ist der Durchschnittszustand
-    gesamt_abweichung = 1 + baujahr_abweichung + sanierung_abweichung + zustand_abweichung
 
     mietpreis_pro_qm = preis * gesamt_abweichung
     mietpreis_gesamt = mietpreis_pro_qm * size
@@ -97,7 +104,7 @@ try:
     mietpreis_pro_qm=round(mietpreis_pro_qm, 2)
     mietpreis_pro_qm=str(mietpreis_pro_qm)
 
-    st.text("Für die Wohnfläche wurde ein Preis von "+mietpreis_pro_qm+"€ pro Quadratmeter errechnet.\nDie monatliche Kaltmiete für die Wohnung sollte deswegen "+mietpreis_gesamt+"€ betragen.")
+    st.text("Unter Berücksichtigung der Faktoren Baujahr, Sanierung und Zustand wurde ein Mietpreis von "+mietpreis_pro_qm+"€ pro Quadratmeter errechnet.\nDie monatliche Kaltmiete für die Wohnung sollte deswegen "+mietpreis_gesamt+"€ betragen.")
     st.text("Mit "+people+" Personen im Haushalt ergibt Warmmiete von "+warmmiete+"€ (Strom und Heizkosten nicht inbegriffen).")
 except:
   st.text("Für den ausgewählen Ort gibt es leider keinen Mietspiegel")
