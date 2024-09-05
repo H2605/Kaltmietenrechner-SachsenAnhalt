@@ -34,7 +34,7 @@ places_list=["Aken-Elbe","Aland","Allstedt","Alsleben-Saale","Altenhausen","Altm
              "Selke-Aue","Sommersdorf","Staßfurt","Steigra","Stendal","Stoeßen","Suedharz","Suedliches-Anhalt","Suelzetal",
              "Tangerhuette","Tangermuende","Teuchern","Teutschenthal","Thale","Ummendorf","Voelpke","Wallhausen","Wallstawe",
              "Wanzleben-Boerde","Wefensleben","Wegeleben","Weißenfels","Werben-Elbe","Wernigerode","Westheide","Wethau",
-             "Wetterzeube","Wettin-Loebejuen","Wimmelburg","Wittenberg,-Lutherstadt","Wolmirsleben","Wolmirstedt",
+             "Wetterzeube","Wettin-Loebejuen","Wimmelburg","Wolmirsleben","Wolmirstedt",
              "Wust-Fischbeck","Zahna-Elster","Zehrental","Zeitz","Zerbst-Anhalt","Zielitz","Zoerbig"]
 place=st.selectbox(label="Gemeinde in Sachsen Anhalt auswählen",options=places_list)
 placelow=str.lower(place)
