@@ -97,7 +97,7 @@ try:
     mietpreis_pro_qm=round(mietpreis_pro_qm, 2)
     mietpreis_pro_qm=str(mietpreis_pro_qm)
 
-    st.text("Für die Wohnfläche wurde ein Preis von "+mietpreis_pro_qm+"€ pro Quadratmeter errechnet.\nDie Kaltmiete für die Wohnung sollte deswegen "+mietpreis_gesamt+"€ betragen.")
+    st.text("Für die Wohnfläche wurde ein Preis von "+mietpreis_pro_qm+"€ pro Quadratmeter errechnet.\nDie monatliche Kaltmiete für die Wohnung sollte deswegen "+mietpreis_gesamt+"€ betragen.")
     st.text("Mit "+people+" Personen im Haushalt ergibt Warmmiete von "+warmmiete+"€ (Strom und Heizkosten nicht inbegriffen).")
 except:
   st.text("Für den ausgewählen Ort gibt es leider keinen Mietspiegel")
