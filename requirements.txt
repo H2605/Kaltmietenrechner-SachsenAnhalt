@@ -1,4 +1,1 @@
 bs4
-streamlit==1.38.0
-pandas==1.1.3
-
