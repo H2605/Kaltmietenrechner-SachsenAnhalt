@@ -45,7 +45,7 @@ try:
 
     # Sende eine GET-Anfrage an die Webseite
     response = requests.get(url)
-    st.text(response)
+    #st.text(response)
     # Überprüfen, ob die Anfrage erfolgreich war
     if response.status_code == 200:
         # Den HTML-Inhalt der Seite parsen
