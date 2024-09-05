@@ -76,8 +76,8 @@ preis=preis.replace(",",".")
 preis=float(preis)
 
 gewichtung_baujahr = 0.02  # 2% Veränderung pro Dekade
-gewichtung_sanierung = 0.03  # 3% pro Dekade seit der letzten Sanierung
-gewichtung_zustand = 0.05  # 5% je nach Zustand der Wohnung
+gewichtung_sanierung = 0.04  # 3% pro Dekade seit der letzten Sanierung
+gewichtung_zustand = 0.04  # 5% je nach Zustand der Wohnung
 
 baujahr_abweichung = (datetime.now().year - yearbuild) / 10 * -gewichtung_baujahr
 sanierung_abweichung = (datetime.now().year - yearres) / 10 * -gewichtung_sanierung
