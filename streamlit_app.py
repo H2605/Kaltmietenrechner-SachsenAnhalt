@@ -88,12 +88,16 @@ try:
 
     mietpreis_pro_qm = preis * gesamt_abweichung
     mietpreis_gesamt = mietpreis_pro_qm * size
+    warmmiete=round(mietpreis_gesamt+(30*people),2)
+    warmmiete=str(warmmiete)
     mietpreis_gesamt=round(mietpreis_gesamt, 2)
+    people=str(people)
     #mietpreis_gesamt=mietpreis_gesamt.replace(",",".")
     mietpreis_gesamt=str(mietpreis_gesamt)
     mietpreis_pro_qm=round(mietpreis_pro_qm, 2)
     mietpreis_pro_qm=str(mietpreis_pro_qm)
 
     st.text("Für die Wohnfläche wurde ein Preis von "+mietpreis_pro_qm+"€ pro Quadratmeter errechnet.\nDie Kaltmiete für die Wohnung sollte deswegen "+mietpreis_gesamt+"€ betragen.")
+    st.text("Mit "+people+" im Haushalt ergibt Warmmiete von "+warmmiete+"€ (Strom und Heizkosten nicht inbegriffen).")
 except:
   st.text("Für den ausgewählen Ort gibt es leider keinen Mietspiegel")
