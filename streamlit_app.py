@@ -64,8 +64,8 @@ pattern = r"(\d+,\d{2})"
 match = re.search(pattern, stranger)
 preis=match.group(1)
 
-people=st.slider(label="Anzahl der Personen", )
-size=st.slider(label="Wohnfläche in qm", max_value=1000)
+people=st.slider(label="Anzahl der Personen",value=1, min_value=1 )
+size=st.slider(label="Wohnfläche in qm", max_value=1000, min_value=5,value=20)
 zustand=st.slider(label="Zustand der Wohnung", min_value=0, max_value=10, step=1, value=5)
 yearbuild=st.number_input(label="Jahr der Errichtung", min_value=1800, max_value= datetime.now().year, value=1950)
 yearres=st.number_input(label="Jahr der letzten Sanierung", min_value=1800, max_value= datetime.now().year,value=1950)
