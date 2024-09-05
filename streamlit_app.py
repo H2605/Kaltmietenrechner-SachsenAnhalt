@@ -91,6 +91,7 @@ try:
     mietpreis_gesamt=round(mietpreis_gesamt, 2)
     #mietpreis_gesamt=mietpreis_gesamt.replace(",",".")
     mietpreis_gesamt=str(mietpreis_gesamt)
+    mietpreis_pro_qm=round(mietpreis_pro_qm, 2)
     mietpreis_pro_qm=str(mietpreis_pro_qm)
 
     st.text("Für die Wohnfläche wurde ein Prei von "+mietpreis_pro_qm+"€ pro Quadratmeter errechnet.\n Die Miete für die Wohnung sollte deswegen "+mietpreis_gesamt+"€ betragen.")
