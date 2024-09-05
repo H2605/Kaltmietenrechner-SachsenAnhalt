@@ -7,7 +7,7 @@ from datetime import datetime
 # URL der Webseite
 
 
-places_list=["Ahlsdorf","Aken-Elbe","Aland","Allstedt","Alsleben-Saale","Altenhausen","Altmaerkische-Hoehe",
+places_list=["Aken-Elbe","Aland","Allstedt","Alsleben-Saale","Altenhausen","Altmaerkische-Hoehe",
              "Altmaerkische-Wische","Am-Großen-Bruch","An-der-Poststraße","Angern","Annaburg","Apenburg-Winterfeld",
              "Arendsee-Altmark","Arneburg","Arnstein","Aschersleben","Ausleben","Bad-Bibra","Bad-Duerrenberg",
              "Bad-Lauchstaedt","Bad-Schmiedeberg","Balgstaedt","Ballenstedt","Barby","Barleben","Barnstaedt","Beendorf",
@@ -65,10 +65,10 @@ match = re.search(pattern, stranger)
 preis=match.group(1)
 
 people=st.slider(label="Anzahl der Personen", )
-size=st.number_input(label="Appartement Größe")
-zustand=st.slider(label="Zustand der Wohnung", min_value=0.0, max_value=10.0, step=0.5)
-yearbuild=st.number_input(label="Jahr der Errichtung", min_value=1800, max_value= datetime.now().year)
-yearres=st.number_input(label="Jahr der letzten Sanierung", min_value=1800, max_value= datetime.now().year)
+size=st.slider(label="Appartement Größe")
+zustand=st.slider(label="Zustand der Wohnung", min_value=0, max_value=10, step=1, value=5)
+yearbuild=st.number_input(label="Jahr der Errichtung", min_value=1800, max_value= datetime.now().year, value=1950)
+yearres=st.number_input(label="Jahr der letzten Sanierung", min_value=1800, max_value= datetime.now().year,value=1950)
 
 st.text("Der Preis pro Quadratmeter in "+place+" beträgt "+preis+"€ .")
 preis=preis.replace(",",".")
