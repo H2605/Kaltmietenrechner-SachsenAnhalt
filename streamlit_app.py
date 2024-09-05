@@ -89,7 +89,7 @@ try:
     
     sanierung_faktor=abklingfunktion(sanierung_abweichung,gewichtung_sanierung )
     baujahr_faktor= abklingfunktion(baujahr_abweichung, gewichtung_baujahr)
-    zustand_faktor = 1 + (zustand - 3) * gewichtung_zustand  # 5 ist der Durchschnittszustand
+    zustand_faktor = 1 + (zustand - 5) * gewichtung_zustand  # 5 ist der Durchschnittszustand
     gesamt_abweichung = baujahr_faktor * sanierung_faktor * zustand_faktor
 
 
