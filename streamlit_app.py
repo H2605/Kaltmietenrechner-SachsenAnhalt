@@ -93,6 +93,6 @@ try:
     mietpreis_gesamt=str(mietpreis_gesamt)
     mietpreis_pro_qm=str(mietpreis_pro_qm)
 
-    st.text("Für die Wohnfläche wurde ein Prei von "+mietpreis_pro_qm"€ pro Quadratmeter errechnet.\n Die Miete für die Wohnung sollte deswegen "+mietpreis_gesamt+"€ betragen.")
+    st.text("Für die Wohnfläche wurde ein Prei von "+mietpreis_pro_qm+"€ pro Quadratmeter errechnet.\n Die Miete für die Wohnung sollte deswegen "+mietpreis_gesamt+"€ betragen.")
 except:
   st.text("Für den ausgewählen Ort gibt es leider keinen Mietspiegel")
