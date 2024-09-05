@@ -38,57 +38,60 @@ places_list=["Aken-Elbe","Aland","Allstedt","Alsleben-Saale","Altenhausen","Altm
              "Wust-Fischbeck","Zahna-Elster","Zehrental","Zeitz","Zerbst-Anhalt","Zielitz","Zoerbig"]
 place=st.selectbox(label="Gemeinde in Sachsen Anhalt auswählen",options=places_list)
 placelow=str.lower(place)
-url = "https://www.engelvoelkers.com/de-de/mietspiegel/sachsen-anhalt/"+placelow+"/"
+try:
+    url = "https://www.engelvoelkers.com/de-de/mietspiegel/sachsen-anhalt/"+placelow+"/"
 
 
 
-# Sende eine GET-Anfrage an die Webseite
-response = requests.get(url)
-st.text(response)
-# Überprüfen, ob die Anfrage erfolgreich war
-if response.status_code == 200:
-    # Den HTML-Inhalt der Seite parsen
-    soup = BeautifulSoup(response.content, 'html.parser')
-    st.text("Verbindung erfolgreich")
+    # Sende eine GET-Anfrage an die Webseite
+    response = requests.get(url)
+    st.text(response)
+    # Überprüfen, ob die Anfrage erfolgreich war
+    if response.status_code == 200:
+        # Den HTML-Inhalt der Seite parsen
+        soup = BeautifulSoup(response.content, 'html.parser')
+        st.text("Verbindung erfolgreich")
 
-else:
-    st.text(print(f"Fehler beim Abrufen der Seite: {response.status_code}"))
+    else:
+        st.text(print(f"Fehler beim Abrufen der Seite: {response.status_code}"))
 
-body=soup.body.div
-stringer=body.contents[13]("p")
-stranger=str(stringer)
-stranger
-pattern = r"(\d+,\d{2})"
+    body=soup.body.div
+    stringer=body.contents[13]("p")
+    stranger=str(stringer)
+    stranger
+    pattern = r"(\d+,\d{2})"
 
-# Suche nach dem Muster
-match = re.search(pattern, stranger)
-preis=match.group(1)
+    # Suche nach dem Muster
+    match = re.search(pattern, stranger)
+    preis=match.group(1)
 
-people=st.slider(label="Anzahl der Personen",value=1, min_value=1 )
-size=st.slider(label="Wohnfläche in qm", max_value=1000, min_value=5,value=20)
-zustand=st.slider(label="Zustand der Wohnung", min_value=0, max_value=10, step=1, value=5)
-yearbuild=st.number_input(label="Jahr der Errichtung", min_value=1800, max_value= datetime.now().year, value=1950)
-yearres=st.number_input(label="Jahr der letzten Sanierung", min_value=1800, max_value= datetime.now().year,value=1950)
+    people=st.slider(label="Anzahl der Personen",value=1, min_value=1 )
+    size=st.slider(label="Wohnfläche in qm", max_value=1000, min_value=5,value=20)
+    zustand=st.slider(label="Zustand der Wohnung", min_value=0, max_value=10, step=1, value=5)
+    yearbuild=st.number_input(label="Jahr der Errichtung", min_value=1800, max_value= datetime.now().year, value=1950)
+    yearres=st.number_input(label="Jahr der letzten Sanierung", min_value=1800, max_value= datetime.now().year,value=1950)
 
-st.text("Der Preis pro Quadratmeter in "+place+" beträgt "+preis+"€ .")
-preis=preis.replace(",",".")
-#st.text(type(preis))
-preis=float(preis)
+    st.text("Der Preis pro Quadratmeter in "+place+" beträgt "+preis+"€ .")
+    preis=preis.replace(",",".")
+    #st.text(type(preis))
+    preis=float(preis)
 
-gewichtung_baujahr = 0.02  # 2% Veränderung pro Dekade
-gewichtung_sanierung = 0.04  # 3% pro Dekade seit der letzten Sanierung
-gewichtung_zustand = 0.04  # 5% je nach Zustand der Wohnung
+    gewichtung_baujahr = 0.02  # 2% Veränderung pro Dekade
+    gewichtung_sanierung = 0.04  # 3% pro Dekade seit der letzten Sanierung
+    gewichtung_zustand = 0.04  # 5% je nach Zustand der Wohnung
 
-baujahr_abweichung = (datetime.now().year - yearbuild) / 10 * -gewichtung_baujahr
-sanierung_abweichung = (datetime.now().year - yearres) / 10 * -gewichtung_sanierung
+    baujahr_abweichung = (datetime.now().year - yearbuild) / 10 * -gewichtung_baujahr
+    sanierung_abweichung = (datetime.now().year - yearres) / 10 * -gewichtung_sanierung
 
-zustand_abweichung = (zustand - 3) * gewichtung_zustand  # 3 ist der Durchschnittszustand
-gesamt_abweichung = 1 + baujahr_abweichung + sanierung_abweichung + zustand_abweichung
+    zustand_abweichung = (zustand - 3) * gewichtung_zustand  # 3 ist der Durchschnittszustand
+    gesamt_abweichung = 1 + baujahr_abweichung + sanierung_abweichung + zustand_abweichung
 
-mietpreis_pro_qm = preis * gesamt_abweichung
-mietpreis_gesamt = mietpreis_pro_qm * size
-mietpreis_gesamt=round(mietpreis_gesamt, 2)
-#mietpreis_gesamt=mietpreis_gesamt.replace(",",".")
-mietpreis_gesamt=str(mietpreis_gesamt)
+    mietpreis_pro_qm = preis * gesamt_abweichung
+    mietpreis_gesamt = mietpreis_pro_qm * size
+    mietpreis_gesamt=round(mietpreis_gesamt, 2)
+    #mietpreis_gesamt=mietpreis_gesamt.replace(",",".")
+    mietpreis_gesamt=str(mietpreis_gesamt)
 
-st.text("Die Miete für die Wohnung sollte "+mietpreis_gesamt+"€ betragen.")
+    st.text("Die Miete für die Wohnung sollte "+mietpreis_gesamt+"€ betragen.")
+except:
+  print("Für den ausgewählen Ort gibt es leider keinen Mietspiegel")
