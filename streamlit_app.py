@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import streamlit as st
 from datetime import datetime
 # URL der Webseite
-
+st.title("Kaltmieten Rechner Sachsen Anhalt(Wohnungen)")
 
 places_list=["Aken-Elbe","Aland","Allstedt","Alsleben-Saale","Altenhausen","Altmaerkische-Hoehe",
              "Altmaerkische-Wische","Am-Großen-Bruch","An-der-Poststraße","Angern","Annaburg","Apenburg-Winterfeld",
