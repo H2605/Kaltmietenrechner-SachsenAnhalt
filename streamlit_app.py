@@ -52,13 +52,13 @@ try:
         soup = BeautifulSoup(response.content, 'html.parser')
         st.text("Verbindung erfolgreich")
 
-    else:
-        st.text(print(f"Fehler beim Abrufen der Seite: {response.status_code}"))
+#    else:
+#        st.text(print(f"Fehler beim Abrufen der Seite: {response.status_code}"))
 
     body=soup.body.div
     stringer=body.contents[13]("p")
     stranger=str(stringer)
-    stranger
+    #stranger
     pattern = r"(\d+,\d{2})"
 
     # Suche nach dem Muster
