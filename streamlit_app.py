@@ -103,5 +103,4 @@ try:
     st.text("Unter Berücksichtigung der Faktoren Baujahr, Sanierung und Zustand wurde ein Mietpreis von "+mietpreis_pro_qm+"€ pro Quadratmeter errechnet.\nDie monatliche Kaltmiete für die Wohnung sollte deswegen "+mietpreis_gesamt+"€ betragen.")
     st.text("Mit "+people+" Personen im Haushalt ergibt das eine Warmmiete von "+warmmiete+"€ (Strom und Heizkosten nicht inbegriffen).")
 except:
-  st.error("Kein Mietspiegel verfügbar")
-  st.text("Für den ausgewählen Ort gibt es leider keinen Mietspiegel")
+  st.error("Für den ausgewählen Ort ein Mietspiegel leider noch nicht verfügbar")
