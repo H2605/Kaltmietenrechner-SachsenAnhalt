@@ -67,20 +67,20 @@ try:
     preis=match.group(1)
 
     people=st.slider(label="Anzahl der Personen im Haushalt",value=1, min_value=1 )
-    size=st.number_input(label="Wohnfläche in qm", max_value=1000, min_value=5,value=20)
+    size=st.number_input(label="Wohnfläche in m²", max_value=1000, min_value=5,value=20)
     zustand=st.slider(label="Zustand der Wohnung", min_value=0, max_value=10, step=1, value=5)
     yearbuild=st.number_input(label="Jahr der Errichtung", min_value=1800, max_value= datetime.now().year, value=1950)
     yearres=st.number_input(label="Jahr der letzten Sanierung", min_value=yearbuild, max_value= datetime.now().year,value=yearbuild)
 
-    st.text("Der durchschnittliche Mietspiegel in "+place+" beträgt "+preis+"€ pro Quadratmeter.")
+    st.text("Der durchschnittliche Mietspiegel in "+place+" beträgt "+preis+"€ pro m².")
     preis=preis.replace(",",".")
     #st.text(type(preis))
     preis=float(preis)
 
 
-    gewichtung_baujahr = 0.01  # 2% Veränderung pro Dekade
-    gewichtung_sanierung = 0.045  # 3% pro Dekade seit der letzten Sanierung
-    gewichtung_zustand = 0.045  # 5% je nach Zustand der Wohnung
+    gewichtung_baujahr = 0.025  # 2% Veränderung pro Dekade
+    gewichtung_sanierung = 0.10  # 3% pro Dekade seit der letzten Sanierung
+    gewichtung_zustand = 0.10  # 5% je nach Zustand der Wohnung
 
     baujahr_abweichung = (datetime.now().year - yearbuild) / 10 * -gewichtung_baujahr
     sanierung_abweichung = (datetime.now().year - yearres) / 10 * -gewichtung_sanierung
@@ -100,7 +100,7 @@ try:
     mietpreis_pro_qm=round(mietpreis_pro_qm, 2)
     mietpreis_pro_qm=str(mietpreis_pro_qm)
 
-    st.text("Unter Berücksichtigung der Faktoren Baujahr, Sanierung und Zustand wurde ein Mietpreis von "+mietpreis_pro_qm+"€ pro Quadratmeter errechnet.\nDie monatliche Kaltmiete für die Wohnung sollte deswegen "+mietpreis_gesamt+"€ betragen.")
+    st.text("Unter Berücksichtigung der Faktoren Baujahr, Sanierung und Zustand wurde ein Mietpreis von "+mietpreis_pro_qm+"€ pro m² errechnet.\nDie monatliche Kaltmiete für die Wohnung sollte deswegen "+mietpreis_gesamt+"€ betragen.")
     st.text("Mit "+people+" Personen im Haushalt ergibt das eine Warmmiete von "+warmmiete+"€ (Strom und Heizkosten nicht inbegriffen).")
 except:
   st.error("Für den ausgewählen Ort ist ein Mietspiegel leider noch nicht verfügbar")
