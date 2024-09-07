@@ -69,7 +69,7 @@ try:
     people=st.slider(label="Anzahl der Personen im Haushalt",value=1, min_value=1 )
     bk_pp=st.number_input(label="Betriebskosten pro Person in €", min_value=0.00, value=30.00)
     size=st.number_input(label="Wohnfläche in m²", max_value=1000, min_value=5,value=20)
-    zustand=st.slider(label="Zustand der Wohnung", min_value=0, max_value=10, step=1, value=5)
+    zustand=st.slider(label="Zustand der Wohnung(0: Sanierungsfall, 10: Neu Saniert)", min_value=0, max_value=10, step=1, value=5)
     yearbuild=st.number_input(label="Jahr der Errichtung", min_value=1800, max_value= datetime.now().year, value=1950)
     yearres=st.number_input(label="Jahr der letzten Sanierung", min_value=yearbuild, max_value= datetime.now().year,value=yearbuild)
     st.text("Der durchschnittliche Mietspiegel in "+place+" beträgt "+preis+"€ pro m².")
