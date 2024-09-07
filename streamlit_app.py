@@ -69,7 +69,39 @@ try:
     people=st.slider(label="Anzahl der Personen im Haushalt",value=1, min_value=1, max_value=30 )
     bk_pp=st.number_input(label="Betriebskosten pro Person in €", min_value=0.00, value=30.00)
     size=st.number_input(label="Wohnfläche in m²", max_value=1000, min_value=5,value=20)
-    zustand=st.slider(label="Zustand der Wohnung(0: Sanierungsfall, 10: Neu Saniert)", min_value=0, max_value=10, step=1, value=5)
+    zustand=st.slider(label="Zustand der Wohnung", min_value=0, max_value=10, step=1, value=5, 
+                      help='''
+                      1: Sehr schlechter Zustand: 
+                        * Nicht bewohnbar ohne umfassende Renovierungen. 
+                      2: Mangelhafter Zustand 
+                        * Mehrere strukturelle Mängel, die den Wohnkomfort stark beeinträchtigen. 
+                        * Deutliche Abnutzungserscheinungen, teils beschädigte Böden und Wände, Reparaturen notwendig.
+                        * Sanierung dringend erforderlich.
+                    3: Schlechter Zustand
+                        * Spürbare Abnutzung mit alten, nicht mehr zeitgemäßen Elektro- und Sanitärinstallationen.
+                        * Böden und Wände mit vielen Gebrauchsspuren auf.
+                    4: Unterdurchschnittlicher Zustand
+                        * Leichte bis moderate Abnutzung sichtbar (z.B. Kratzer auf Böden, fleckige Wände).
+                        * Funktionsfähige, aber veraltete Installationen und Ausstattung, mit teilweise kleineren Reparaturen erforderlich.
+                        * Modernisierung sinnvoll, aber nicht zwingend notwendig.
+                    5: Durchschnittlicher Zustand
+                        * Böden, Wände und sanitäre Anlagen in funktionalem, aber sichtbarem gebrauchten Zustand.
+                        * Typische Wohnung, wie sie in älteren Bauten häufig vorkommt.
+                    6: Überdurchschnittlicher Zustand
+                        * Gute bauliche Substanz ohne erkennbare Schäden, nur leichte Gebrauchsspuren
+                        *  Kann ohne größere Renovierungen sofort bewohnt werden, aber Modernisierung wäre vorteilhaft.
+                    7: Guter Zustand
+                        * Gut erhalten, gepflegte Wohnung ohne offensichtliche Mängel.
+                        * Angenehmes Wohnambiente mit nur minimalem Modernisierungsbedarf.
+                    8: Sehr guter Zustand
+                        * Keine sichtbare Abnutzung, Wohnung ist im ausgezeichnetem Zustand.
+                        * Hoher Wohnkomfort, keine Reparaturen oder Modernisierungen erforderlich.
+                    9: Neuwertiger Zustand
+                        * Wie neu oder kürzlich komplett renoviert.
+                        * Keine Abnutzung sichtbar, hochwertiger Wohnkomfort.
+                    10: Exzellenter Zustand / Luxusniveau
+                    * Perfekter Zustand, vergleichbar mit einer Neubau- oder Luxuswohnung.
+''')
     yearbuild=st.number_input(label="Jahr der Errichtung", min_value=1800, max_value= datetime.now().year, value=1950)
     yearres=st.number_input(label="Jahr der letzten Sanierung", min_value=yearbuild, max_value= datetime.now().year,value=yearbuild)
     st.text("Der durchschnittliche Mietspiegel in "+place+" beträgt "+preis+"€ pro m².")
@@ -85,7 +117,7 @@ try:
     baujahr_abweichung = (datetime.now().year - yearbuild) / 10 * -gewichtung_baujahr
     sanierung_abweichung = (datetime.now().year - yearres) / 10 * -gewichtung_sanierung
 
-    zustand_abweichung = (zustand - 5) * gewichtung_zustand  # 5 ist der Durchschnittszustand
+    zustand_abweichung = (zustand - 5) * gewichtung_zustand  # 3 ist der Durchschnittszustand
     gesamt_abweichung = 1 + baujahr_abweichung + sanierung_abweichung + zustand_abweichung
 
 
