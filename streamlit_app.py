@@ -78,7 +78,7 @@ try:
                         #Deutliche Abnutzungserscheinungen, teils beschädigte Böden und Wände, Reparaturen notwendig.
                         #Sanierung dringend erforderlich.
                     # 3: Schlechter Zustand
-                        Spürbare Abnutzung mit alten, nicht mehr zeitgemäßen Elektro- und Sanitärinstallationen.
+                        # Spürbare Abnutzung mit alten, nicht mehr zeitgemäßen Elektro- und Sanitärinstallationen.
                         Böden und Wände mit vielen Gebrauchsspuren auf.
                     # 4: Unterdurchschnittlicher Zustand
                     #     * Leichte bis moderate Abnutzung sichtbar (z.B. Kratzer auf Böden, fleckige Wände).
