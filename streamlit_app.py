@@ -85,14 +85,14 @@ try:
                         Funktionsfähige, aber veraltete Installationen und Ausstattung, mit teilweise kleineren Reparaturen erforderlich.
                         Modernisierung sinnvoll, aber nicht zwingend notwendig.
                     # 5: Durchschnittlicher Zustand
-                        Böden, Wände und sanitäre Anlagen in funktionalem, aber sichtbarem gebrauchten Zustand.
+                        Böden, Wände und sanitäre Anlagen in funktionalem, aber sichtbarem gebrauchten Zustand.\n
                         Typische Wohnung, wie sie in älteren Bauten häufig vorkommt.
                     # 6: Überdurchschnittlicher Zustand
                         Gute bauliche Substanz ohne erkennbare Schäden, nur leichte Gebrauchsspuren
                         Kann ohne größere Renovierungen sofort bewohnt werden, aber Modernisierung wäre vorteilhaft.
                     # 7: Guter Zustand
-                        Gut erhalten, gepflegte Wohnung ohne offensichtliche Mängel.
-                        Angenehmes Wohnambiente mit nur minimalem Modernisierungsbedarf.
+                        •Gut erhalten, gepflegte Wohnung ohne offensichtliche Mängel.
+                        •Angenehmes Wohnambiente mit nur minimalem Modernisierungsbedarf.
                     # 8: Sehr guter Zustand
                         Keine sichtbare Abnutzung, Wohnung ist im ausgezeichnetem Zustand.
                         Hoher Wohnkomfort, keine Reparaturen oder Modernisierungen erforderlich.
