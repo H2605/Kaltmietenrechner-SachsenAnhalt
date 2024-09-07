@@ -66,7 +66,7 @@ try:
     match = re.search(pattern, stranger)
     preis=match.group(1)
 
-    people=st.slider(label="Anzahl der Personen im Haushalt",value=1, min_value=1 )
+    people=st.slider(label="Anzahl der Personen im Haushalt",value=1, min_value=1, max_value=30 )
     bk_pp=st.number_input(label="Betriebskosten pro Person in €", min_value=0.00, value=30.00)
     size=st.number_input(label="Wohnfläche in m²", max_value=1000, min_value=5,value=20)
     zustand=st.slider(label="Zustand der Wohnung(0: Sanierungsfall, 10: Neu Saniert)", min_value=0, max_value=10, step=1, value=5)
