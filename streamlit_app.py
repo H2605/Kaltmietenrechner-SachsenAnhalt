@@ -71,7 +71,7 @@ try:
     size=st.number_input(label="Wohnfläche in m²", max_value=1000, min_value=5,value=20)
     zustand=st.slider(label="Zustand der Wohnung", min_value=0, max_value=10, step=1, value=5, 
                       help='''
-                      1: Sehr schlechter Zustand: 
+                    #   1: Sehr schlechter Zustand: 
                         * Nicht bewohnbar ohne umfassende Renovierungen. 
                       2: Mangelhafter Zustand 
                         * Mehrere strukturelle Mängel, die den Wohnkomfort stark beeinträchtigen. 
