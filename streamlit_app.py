@@ -78,9 +78,9 @@ try:
     preis=float(preis)
 
 
-    gewichtung_baujahr = 0.025  # 2% Veränderung pro Dekade
-    gewichtung_sanierung = 0.10  # 3% pro Dekade seit der letzten Sanierung
-    gewichtung_zustand = 0.10  # 5% je nach Zustand der Wohnung
+    gewichtung_baujahr = 0.01  # 2% Veränderung pro Dekade
+    gewichtung_sanierung = 0.045  # 3% pro Dekade seit der letzten Sanierung
+    gewichtung_zustand = 0.045  # 5% je nach Zustand der Wohnung
 
     baujahr_abweichung = (datetime.now().year - yearbuild) / 10 * -gewichtung_baujahr
     sanierung_abweichung = (datetime.now().year - yearres) / 10 * -gewichtung_sanierung
