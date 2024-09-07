@@ -71,7 +71,7 @@ try:
     zustand=st.slider(label="Zustand der Wohnung", min_value=0, max_value=10, step=1, value=5)
     yearbuild=st.number_input(label="Jahr der Errichtung", min_value=1800, max_value= datetime.now().year, value=1950)
     yearres=st.number_input(label="Jahr der letzten Sanierung", min_value=yearbuild, max_value= datetime.now().year,value=yearbuild)
-
+    bk_pp=st.number_input(label="Betriebskosten pro Person in €", min_value=0.00, value=30)
     st.text("Der durchschnittliche Mietspiegel in "+place+" beträgt "+preis+"€ pro m².")
     preis=preis.replace(",",".")
     #st.text(type(preis))
@@ -91,7 +91,7 @@ try:
 
     mietpreis_pro_qm = preis * gesamt_abweichung
     mietpreis_gesamt = mietpreis_pro_qm * size
-    warmmiete=round(mietpreis_gesamt+(30*people),2)
+    warmmiete=round(mietpreis_gesamt+(bk_pp*people),2)
     warmmiete=str(warmmiete)
     mietpreis_gesamt=round(mietpreis_gesamt, 2)
     people=str(people)
