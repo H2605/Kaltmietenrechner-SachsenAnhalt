@@ -6,7 +6,7 @@ import streamlit as st
 from datetime import datetime
 import numpy as np
 
-st.title("Kaltmieten Rechner Sachsen Anhalt(Wohnungen)")
+st.title("Kaltmieten Rechner Deutschland(Wohnungen)")
 bl_list=["Baden-Württemberg","Bayern","Berlin","Brandenburg","Bremen","Hamburg","Hessen","Mecklenburg-Vorpommern",
          "Niedersachsen","Nordrhein-Westfalen","Rheinland-Pfalz","Saarland","Sachsen","Sachsen-Anhalt","Schleswig-Holstein","Thüringen"]
 bl=st.selectbox(label="Bundesland auswählen", options=bl_list)
