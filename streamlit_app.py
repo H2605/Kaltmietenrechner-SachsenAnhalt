@@ -105,7 +105,7 @@ try:
 #        st.text(print(f"Fehler beim Abrufen der Seite: {response.status_code}"))
 
     body=soup.body.div
-    stringer=body.contents[13]("p")
+    stringer=body.contents[14]("p")
     stranger=str(stringer)
     #stranger
     pattern = r'(\d+,\d+)\s*€'
