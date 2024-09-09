@@ -79,6 +79,7 @@ places_sa=["Magdeburg","Ahlsdorf","Aken-Elbe","Aland","Allstedt","Alsleben-Saale
              "Wanzleben-Boerde","Wefensleben","Wegeleben","Weissenfels","Werben-Elbe","Wernigerode","Westheide","Wethau",
              "Wetterzeube","Wettin-Loebejuen","Wimmelburg","Wolmirsleben","Wolmirstedt",
              "Wust-Fischbeck","Zahna-Elster","Zehrental","Zeitz","Zerbst-Anhalt","Zielitz","Zoerbig"]
+places_list=[]
 if bl_list=="Nordrhein-Westfalen":
    places_list=places_nrw
 elif bl_list=="Sachsen-Anhalt":
