@@ -108,7 +108,7 @@ try:
     stringer=body.contents[13]("p")
     stranger=str(stringer)
     #stranger
-    pattern = r"(\d+,\d{0,2})€"
+    pattern = r'(\d+,\d+)\s*€'
 
     # Suche nach dem Muster
     match = re.search(pattern, stranger)
