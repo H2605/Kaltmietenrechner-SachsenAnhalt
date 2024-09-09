@@ -84,7 +84,7 @@ if bl_list=="Nordrhein-Westfalen":
 elif bl_list=="Sachsen-Anhalt":
    places_list=places_sa
 
-place=st.selectbox(label="Gemeinde in "+bl+" auswählen",options=places_list)
+place=st.selectbox(label="Gemeinde im Bundesland auswählen",options=places_list)
 placelow=str.lower(place)
 try:
     url = "https://www.engelvoelkers.com/de-de/mietspiegel/"+bl_low+"/"+placelow+"/"
