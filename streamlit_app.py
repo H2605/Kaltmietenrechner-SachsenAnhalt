@@ -80,9 +80,9 @@ places_sa=["Magdeburg","Ahlsdorf","Aken-Elbe","Aland","Allstedt","Alsleben-Saale
              "Wetterzeube","Wettin-Loebejuen","Wimmelburg","Wolmirsleben","Wolmirstedt",
              "Wust-Fischbeck","Zahna-Elster","Zehrental","Zeitz","Zerbst-Anhalt","Zielitz","Zoerbig"]
 places_list=[]
-if bl_list=="Nordrhein-Westfalen":
+if bl=="Nordrhein-Westfalen":
    places_list=places_nrw
-elif bl_list=="Sachsen-Anhalt":
+elif bl=="Sachsen-Anhalt":
    places_list=places_sa
 
 place=st.selectbox(label="Gemeinde im Bundesland auswählen",options=places_list)
