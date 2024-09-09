@@ -38,7 +38,7 @@ places_nrw=["Aachen","Ahaus","Ahlen","Aldenhoven","Alfter","Alpen-Niederrhein","
             "Netphen","Nettersheim","Nettetal","Neuenkirchen-Steinfurt","Neuenrade","Neukirchen-Vluyn","Neunkirchen-Siegerland","Neunkirchen-Seelscheid",
             "Neuss","Nideggen","Niederkassel","Niederkruechten","Niederzier","Nieheim","Nordkirchen","Nordwalde","Noervenich","Nottuln","Nuembrecht",
             "Oberhausen","Ochtrup","Odenthal","Oelde","Oer-Erkenschwick","Oerlinghausen","Olfen","Olpe","Olsberg","Ostbevern","Overath","Paderborn",
-            "Petershagen","Plettenberg","Porta-Westfalica-Stadt","Preußisch-Oldendorf","Pulheim","Radevormwald","Raesfeld","Rahden","Ratingen",
+            "Petershagen","Plettenberg","Porta-Westfalica","Preußisch-Oldendorf","Pulheim","Radevormwald","Raesfeld","Rahden","Ratingen",
             "Recke-Westfalen","Recklinghausen","Rees","Reichshof","Reken","Remscheid","Rheda-Wiedenbrueck","Rhede","Rheinbach","Rheinberg","Rheine",
             "Rheurdt","Rietberg","Roedinghausen","Roetgen","Rommerskirchen","Rosendahl","Roesrath","Ruppichteroth","Ruethen","Saerbeck","Salzkotten",
             "Sankt-Augustin","Sassenberg","Schalksmuehle","Schermbeck","Schieder-Schwalenberg","Schlangen-Gemeinde","Schleiden","Schloß-Holte-Stukenbrock",
