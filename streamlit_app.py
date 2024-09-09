@@ -7,8 +7,50 @@ from datetime import datetime
 import numpy as np
 
 st.title("Kaltmieten Rechner Sachsen Anhalt(Wohnungen)")
-
-places_list=["Magdeburg","Ahlsdorf","Aken-Elbe","Aland","Allstedt","Alsleben-Saale","Altenhausen","Altmaerkische-Hoehe",
+bl_list=["Baden-Württemberg","Bayern","Berlin","Brandenburg","Bremen","Hamburg","Hessen","Mecklenburg-Vorpommern",
+         "Niedersachsen","Nordrhein-Westfalen","Rheinland-Pfalz","Saarland","Sachsen","Sachsen-Anhalt","Schleswig-Holstein","Thüringen"]
+bl=st.selectbox(label="Bundesland auswählen", options=bl_list)
+bl_low=str.lower(bl)
+places_nrw=["Aachen","Ahaus","Ahlen","Aldenhoven","Alfter","Alpen-Niederrhein","Alsdorf","Altena","Altenbeken","Altenberge","Anroechte",
+            "Arnsberg","Ascheberg-Westfalen","Attendorn","Augustdorf","Bad-Berleburg","Bad-Driburg","Bad-Honnef","Bad-Laasphe","Bad-Lippspringe",
+            "Bad-Muenstereifel","Bad-Oeynhausen","Bad-Salzuflen","Bad-Sassendorf","Bad-Wuennenberg","Baesweiler","Balve","Barntrup","Beckum",
+            "Bedburg","Bedburg-Hau","Beelen","Bergheim","Bergisch-Gladbach","Bergkamen","Bergneustadt","Bestwig","Beverungen","Bielefeld",
+            "Billerbeck","Blankenheim-Ahr","Blomberg","Bocholt","Bochum","Boenen","Bonn","Borchen","Borgentreich","Borgholzhausen","Borken",
+            "Bornheim-Rheinland","Bottrop","Brakel","Breckerfeld","Brilon","Brueggen","Bruehl-Rheinland","Buende","Burbach-Siegerland",
+            "Bueren-Westfalen","Burscheid","Castrop-Rauxel","Coesfeld","Dahlem-Nordeifel","Datteln","Delbrueck","Detmold","Dinslaken",
+            "Doerentrup","Dormagen","Dorsten","Dortmund","Drensteinfurt","Drolshagen","Duisburg","Duelmen","Dueren","Duesseldorf","Eitorf",
+            "Elsdorf-Rheinland","Emmerich-am-Rhein","Emsdetten","Engelskirchen","Enger","Ennepetal","Ennigerloh","Ense","Erftstadt","Erkelenz",
+            "Erkrath","Erndtebrueck","Erwitte","Eschweiler","Eslohe-Sauerland","Espelkamp","Essen","Euskirchen","Everswinkel","Extertal",
+            "Finnentrop","Frechen","Freudenberg-Siegerland","Froendenberg-Ruhr","Gangelt","Geilenkirchen","Geldern","Gelsenkirchen","Gescher",
+            "Geseke","Gevelsberg","Gladbeck","Goch","Grefrath","Greven","Grevenbroich","Gronau-Westf.","Gummersbach","Guetersloh","Haan","Hagen",
+            "Hallenberg","Halle-Westf.","Haltern-am-See","Halver","Hamm","Hamminkeln","Harsewinkel","Hattingen","Havixbeck","Heek",
+            "Heiden-Muensterland","Heiligenhaus","Heimbach-Eifel","Heinsberg","Hellenthal","Hemer","Hennef-Sieg","Herdecke","Herford","Herne",
+            "Herscheid","Herten","Herzebrock-Clarholz","Herzogenrath","Hiddenhausen","Hilchenbach","Hilden","Hille","Holzwickede","Hopsten",
+            "Horn-Bad-Meinberg","Hoerstel","Horstmar","Hoevelhof","Hoexter","Hueckelhoven","Hueckeswagen","Huellhorst","Huenxe","Huertgenwald",
+            "Huerth","Ibbenbueren","Inden-Rheinland","Iserlohn","Isselburg","Issum","Juechen","Juelich","Kaarst","Kalkar","Kall","Kalletal",
+            "Kamen","Kamp-Lintfort","Kempen","Kerken","Kerpen","Kevelaer","Kierspe","Kirchhundem","Kirchlengern","Kleve","Koeln","Koenigswinter",
+            "Korschenbroich","Kranenburg-Niederrhein","Krefeld","Kreuzau","Kreuztal","Kuerten","Ladbergen","Laer","Lage-Lippe","Langenberg-Guetersloh",
+            "Langenfeld-Rheinland","Langerwehe","Legden","Leichlingen-Rheinland","Lemgo","Lengerich-Westfalen","Lennestadt","Leopoldshoehe","Leverkusen",
+            "Lichtenau-Westfalen","Lienen","Lindlar","Linnich","Lippetal","Lippstadt","Lohmar","Loehne","Lotte-Westfalen","Luebbecke","Luedenscheid",
+            "Luedinghausen","Luegde","Luenen","Marienheide","Marienmuenster","Marl","Marsberg","Mechernich","Meckenheim-Rheinland","Medebach","Meerbusch",
+            "Meinerzhagen","Menden-Sauerland","Merzenich","Meschede","Metelen","Mettingen","Mettmann","Minden","Moers","Moehnesee-Gemeinde",
+            "Moenchengladbach","Monheim-am-Rhein","Monschau","Morsbach","Much","Muelheim-an-der-Ruhr","Muenster-Westfalen","Nachrodt-Wiblingwerde",
+            "Netphen","Nettersheim","Nettetal","Neuenkirchen-Steinfurt","Neuenrade","Neukirchen-Vluyn","Neunkirchen-Siegerland","Neunkirchen-Seelscheid",
+            "Neuss","Nideggen","Niederkassel","Niederkruechten","Niederzier","Nieheim","Nordkirchen","Nordwalde","Noervenich","Nottuln","Nuembrecht",
+            "Oberhausen","Ochtrup","Odenthal","Oelde","Oer-Erkenschwick","Oerlinghausen","Olfen","Olpe","Olsberg","Ostbevern","Overath","Paderborn",
+            "Petershagen","Plettenberg","Porta-Westfalica-Stadt","Preußisch-Oldendorf","Pulheim","Radevormwald","Raesfeld","Rahden","Ratingen",
+            "Recke-Westfalen","Recklinghausen","Rees","Reichshof","Reken","Remscheid","Rheda-Wiedenbrueck","Rhede","Rheinbach","Rheinberg","Rheine",
+            "Rheurdt","Rietberg","Roedinghausen","Roetgen","Rommerskirchen","Rosendahl","Roesrath","Ruppichteroth","Ruethen","Saerbeck","Salzkotten",
+            "Sankt-Augustin","Sassenberg","Schalksmuehle","Schermbeck","Schieder-Schwalenberg","Schlangen-Gemeinde","Schleiden","Schloß-Holte-Stukenbrock",
+            "Schmallenberg","Schoeppingen","Schwalmtal-Niederrhein","Schwelm","Schwerte","Selfkant","Selm","Senden-Westfalen","Sendenhorst","Siegburg",
+            "Siegen","Simmerath","Soest","Solingen","Sonsbeck","Spenge","Sprockhoevel","Stadtlohn","Steinfurt","Steinhagen-Westfalen",
+            "Steinheim-Westfalen","Stemwede","Stolberg-Rheinland","Straelen","Suedlohn","Sundern-Sauerland","Swisttal","Tecklenburg","Telgte","Titz",
+            "Toenisvorst","Troisdorf","Übach-Palenberg","Uedem","Unna","Velbert","Velen","Verl","Versmold","Vettweiß","Viersen","Vlotho",
+            "Voerde-Niederrhein","Vreden","Wachtberg","Wachtendonk","Wadersloh","Waldbroel","Waldfeucht","Waltrop","Warburg","Warendorf","Warstein",
+            "Wassenberg","Weeze","Wegberg","Weilerswist","Welver","Wenden-Sauerland","Werdohl","Werl","Wermelskirchen","Werne","Werther-Westf.","Wesel",
+            "Wesseling","Westerkappeln","Wetter-Ruhr","Wettringen-Muensterland","Wickede-Ruhr","Wiehl","Willebadessen","Willich","Wilnsdorf","Windeck",
+            "Winterberg","Wipperfuerth","Witten","Wuelfrath","Wuppertal","Wuerselen","Xanten","Zuelpich"]
+places_sa=["Magdeburg","Ahlsdorf","Aken-Elbe","Aland","Allstedt","Alsleben-Saale","Altenhausen","Altmaerkische-Hoehe",
              "Altmaerkische-Wische","Am-Grossen-Bruch","An-der-Poststrasse","Angern","Annaburg","Apenburg-Winterfeld",
              "Arendsee-Altmark","Arneburg","Arnstein","Aschersleben","Ausleben","Bad-Bibra","Bad-Duerrenberg",
              "Bad-Lauchstaedt","Bad-Schmiedeberg","Balgstaedt","Ballenstedt","Barby","Barleben","Barnstaedt","Beendorf",
@@ -37,10 +79,15 @@ places_list=["Magdeburg","Ahlsdorf","Aken-Elbe","Aland","Allstedt","Alsleben-Saa
              "Wanzleben-Boerde","Wefensleben","Wegeleben","Weissenfels","Werben-Elbe","Wernigerode","Westheide","Wethau",
              "Wetterzeube","Wettin-Loebejuen","Wimmelburg","Wolmirsleben","Wolmirstedt",
              "Wust-Fischbeck","Zahna-Elster","Zehrental","Zeitz","Zerbst-Anhalt","Zielitz","Zoerbig"]
-place=st.selectbox(label="Gemeinde in Sachsen Anhalt auswählen",options=places_list)
+if bl_list=="Nordrhein-Westfalen":
+   places_list=places_nrw
+elif bl_list=="Sachsen-Anhalt":
+   places_list=places_sa
+
+place=st.selectbox(label="Gemeinde in "+bl+" auswählen",options=places_list)
 placelow=str.lower(place)
 try:
-    url = "https://www.engelvoelkers.com/de-de/mietspiegel/sachsen-anhalt/"+placelow+"/"
+    url = "https://www.engelvoelkers.com/de-de/mietspiegel/"+bl_low+"/"+placelow+"/"
 
 
 
